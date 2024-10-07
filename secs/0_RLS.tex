@@ -1,0 +1,39 @@
+\section{Recursive Least Squares with Change Detection}
+The goal of the present work is to remove the high-frequency measurement noise from the test and truck measurement signals of concentrations, temperature, flow-rate and urea injection rate. This signals while slowly varying, undergo abrupt changes due to the nonlinearity of the system dynamics. Thus, the problem becomes rejecting the high-frequency noise while retaining the signal jumps. This is achieved by using a recursive least-squares filter with forgetting factor which is set to zero for one sample based on the detection of the jump in magnitude. The Cumulative Sum (CUMSUM) algorithm, a special case of Sequential Probability Ratio Test (SPRT) is used for detecting the signal jumps. The algorithm and the tuning method is described in the rest of this section. Let $\theta$ be the signal to be estimated, $y$ be the noisy measurement signal, $\varepsilon$ be the noise. We have the signal model:
+\begin{algorithm}
+\begin{align*}
+        y_t &= \theta_t + \varepsilon_t\\
+        \hat \theta_t &= \lambda \hat \theta_{t-1} + (1-\lambda) y_t \\
+        \epsilon_t &= y_t - \hat \theta_{t-1} \\
+        s^{\lr{1}}_t &= \epsilon_t \\
+        s^{\lr{2}}_2 &= -\epsilon_t \\
+        g_t^{\lr{1}} &= \max \lr{g_{t-1}^{\lr{1}} + s_t^{\lr{1}} - \nu, 0}\\
+        &\\
+        \text{Alarm if } g_t^{\lr{1}} &> h \text{ or } g_t^{\lr{2}} > h \\
+        \text{After alarm, } g_t^{\lr{1}} &= 0, \: g_t^{\lr{2}} = 0 \text{ and } \hat \theta_t = y_t\\
+        &\\
+        \text{\itbf{Design Parameters}} &: \lambda, \nu, h&\\
+        \text{\itbf{Output}} &: \hat \theta_t&
+\end{align*}
+\caption{Recursive Least Squares with Change Detection}
+\end{algorithm}
+% ======================================================================================================================
+
+\subsection{Tuning of CUMSUM-RLS filtering algorithm}
+Start with a very large threshold $h$. Choose $\nu$ to be one half of the expected change, or adjust $\nu$ such that $g_t = 0$ more than $50\%$ of the time. Then set the threshold so the required number of false alarms (this can be done automatically) or delay for detection is obtained.
+\begin{itemize}
+        \item If faster detection is sought, try to decrease $\nu$.
+        \item If fewer false alarms are wanted, try to increase $\nu$.
+        \item If there is a subset of the change times that does not make sense, try to increase $\nu$.
+\end{itemize}
+
+\subsection{Equivalent time constant approximation for forgetting factor}
+The forgetting factor in RLS makes it behave like a low-pass filter. The equivalent time constant for the forgetting factor is given by:
+\begin{align*}
+        e^{-h/T_f} &= \lambda\\
+        \implies T_f &= \frac{-h}{\ln \lr{\lambda}} \approx \frac{h}{\lr{1-\lambda}} = \begin{cases}
+                100 h & \text{for } \lambda = 0.99\\
+                10 h & \text{for } \lambda = 0.9
+        \end{cases}
+\end{align*}
+where, $h$ is the sampling period and $T_f$ is the equivalent time constant for the forgetting factor. It is thus clear that with a forgetting factor of $\lambda = 0.99$ approximately 100 to 400 immediately  previous samples are used by the current parameter estimation. If $\lambda = 0.9$ that number goes down to $10$ to $40$.
