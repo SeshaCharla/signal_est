@@ -1,4 +1,4 @@
-\section{Power Spectral Density of Individual Signals}
+\section{Power Spectral Density of Individual Test Signals}
 
 \begin{multicols}{2}
        \begin{figure}[H]
@@ -30,7 +30,7 @@
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{./figs/bfr_smth/test_psd/y1.png}
-\caption{PSD of urea injection rate}
+\caption{PSD of $[NO_x]^{out}$ measurement signal}
 \end{figure}
 
 \begin{multicols}{2}
@@ -46,3 +46,15 @@
         \caption{PSD of mass flow rate}
        \end{figure}
 \end{multicols}
+
+% ============================================================================
+
+\subsection{Forgetting factor for RLS}
+
+The PSD plots show that much of the energy for the signals in within the frequency range of $0 \, Hz$ to $0.1 \, Hz$. Thus, the forgetting factor for the RLS algorithm is chosen such that the equivalent time-constant is greater than $1/1 = 10 \, s$. We have,
+
+\begin{align*}
+        T_f &= \frac{h}{1 - \lambda}\\
+        T_f = 10 \quad &\text{ and } \quad h = 0.2\\
+        \implies \lambda &= 1 - \frac{h}{T_f} = 1 - \frac{0.2}{10} = 0.98
+\end{align*}
