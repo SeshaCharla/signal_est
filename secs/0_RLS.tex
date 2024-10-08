@@ -31,9 +31,9 @@ Start with a very large threshold $h$. Choose $\nu$ to be one half of the expect
 The forgetting factor in RLS makes it behave like a low-pass filter. The equivalent time constant for the forgetting factor is given by:
 \begin{align*}
         e^{-h/T_f} &= \lambda\\
-        \implies T_f &= \frac{-h}{\ln \lr{\lambda}} \approx \frac{h}{\lr{1-\lambda}} = \begin{cases}
-                100 h & \text{for } \lambda = 0.99\\
-                10 h & \text{for } \lambda = 0.9
+        \implies T_f &= \frac{-t_d}{\ln \lr{\lambda}} \approx \frac{t_d}{\lr{1-\lambda}} = \begin{cases}
+                100 t_d & \text{for } \lambda = 0.99\\
+                10 t_d & \text{for } \lambda = 0.9
         \end{cases}
 \end{align*}
 where, $h$ is the sampling period and $T_f$ is the equivalent time constant for the forgetting factor. It is thus clear that with a forgetting factor of $\lambda = 0.99$ approximately 100 to 400 immediately  previous samples are used by the current parameter estimation. If $\lambda = 0.9$ that number goes down to $10$ to $40$.

@@ -42,7 +42,26 @@
 The PSD plots show that much of the energy for the signals in within the frequency range of $0 \, Hz$ to $0.05 \, Hz$. Thus, the forgetting factor for the RLS algorithm is chosen such that the equivalent time-constant is greater than $1/0.05 = 20 \, s$. We have,
 
 \begin{align*}
-        T_f &= \frac{h}{1 - \lambda}\\
-        T_f = 20 \quad &\text{ and } \quad h = 1\\
-        \implies \lambda &= 1 - \frac{h}{T_f} = 1 - \frac{1}{20} = 0.95
+        T_f &= \frac{t_d}{1 - \lambda}\\
+        T_f = 20 \quad &\text{ and } \quad t_d = 1\\
+        \implies \lambda &= 1 - \frac{t_d}{T_f} = 1 - \frac{1}{20} = 0.95
 \end{align*}
+
+
+% ============================================================================
+
+\subsection{$h$ and $\nu$ parameters for individual signals}
+
+\begin{table}[H]
+        \centering
+       \begin{tabular}{l l l}
+              \hline \hline
+              \itbf{signal}& $h$   & $\nu$   \\ \hline \hline
+              $y_1$        & $5$   & $2.5$   \\
+              $u_1$        & $40$  & $20$    \\
+              $u_2$        & $2$   & $1$     \\
+              $T$          & $40$  & $30$    \\
+              $F$          & $400$ & $200$   \\ \hline \hline
+       \end{tabular}
+\caption{Values of threshold ($h$)  and bias ($\nu$) for Individual test data signals}
+\end{table}
