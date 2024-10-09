@@ -1,1 +1,45 @@
 \section{Conclusion}
+The tuning parameters for filtering individual truck and test data signals are obtained. The validity of filtered signals is verified by using the power spectral density plots by making sure the curve remains similar within the frequency range of interest which is different for test and truck cases. The results are tabulated bellow:
+
+\begin{minipage}{0.49\textwidth}
+        \begin{table}[H]
+        \centering
+        \caption{Parameters for test data}
+               \begin{tabular}{c c c}
+                      \hline \hline
+                      \itbf{signal}& $h$    & $\nu$   \\ \hline \hline
+                      $x_1$        & $1$    & $0.5$   \\
+                      $x_2$        & $0.04$ & $0.04$  \\
+                      $u_1$        & $1$    & $0.5$   \\
+                      $u_2$        & $0.2$  & $0.1$   \\
+                      $T$          & $40$   & $30$    \\
+                      $F$          & $50$   & $20$    \\
+                      $y_1$        & $1$    & $0.5$   \\ \hline \hline
+               \end{tabular}
+        \end{table}
+        \begin{align*}
+                \lambda &= 0.98\\
+                \text{Frequency range} &: \lrb{0, 0.1} \, Hz\\
+        \end{align*}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+        \begin{table}[H]
+        \centering
+        \caption{Parameters for truck data}
+               \begin{tabular}{c c c}
+                      \hline \hline
+                      \itbf{signal}& $h$   & $\nu$   \\ \hline \hline
+                      $y_1$        & $5$   & $2.5$   \\
+                      $u_1$        & $40$  & $20$    \\
+                      $u_2$        & $2$   & $1$     \\
+                      $T$          & $40$  & $30$    \\
+                      $F$          & $400$ & $200$   \\ \hline \hline
+               \end{tabular}
+        \end{table}
+        \begin{align*}
+                \lambda &= 0.95\\
+                \text{Frequency range} &: \lrb{0, 0.05} \, Hz\\
+        \end{align*}
+\end{minipage}
+
+The results of this work are used for parameter estimation of the discrete nonlinear model using windowed-least squares. The nonlinear model considers the residence time of the reactants under plug-flow reactor assumptions.
