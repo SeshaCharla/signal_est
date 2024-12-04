@@ -1,5 +1,5 @@
 \section{Test Data Signal Ranges}
-
+The ranges of the measurement signals are tabulated bellow:
 \begin{table}[H]
 \centering
 \begin{tabular}{c c c c c}
@@ -7,37 +7,86 @@
 Variable & Units & & & \\
 \hline \hline
 Degreend Data & & Cold FTP & Hot FTP & RMC\\ \hline
-$T$   & $+250 \, ^0C$ &  &  &
+$T$   & $+200 \, ^0C$ & [60.96, -174.0] & [67.38, -64.7] & [148.76, 43.76]
 \\
-$F$   & $g/s$ & & &
+$F$   & $g/s$ & [439.04, 0.0]& [431.14, 0.0]& [403.84, 32.65]
 \\
-$x_1$ & $mol/m^3$ & $[17.24, ]$ & $[3.55, ]$ & $[2.23,]$
+$x_1$ & $mol/m^3$ & [17.24, -2.97] &  [3.55, -0.57]& [2.23, 0.14]
 \\
-$x_2$ & $mol/m^3$ & $[0.06,]$ &  $[0.17,]$ & $[0.27,]$
+$x_2$ & $mol/m^3$ & [0.06, 0.0] & [0.17, -0.01] & [0.27, 0.06]
 \\
-$u_1$ & $mol/m^3$ & $[20.16, ]$ & $[16.46,]$ & $[24.26,]$
+$u_1$ & $mol/m^3$ & [20.16, 0.0] & [16.46, 0.0] & [24.26, 0.0]
 \\
-$u_2$ & $mol/m^3$ & $[1.4,]$ & $[1.0,]$ & $[0.71,]$
+$u_2$ & $mol/m^3$ & [1.4, 0.0] & [1.0, 0.0] & [0.71, 0.01]
 \\
-$y_1$ & $mol/m^3$ & & &
+$y_1$ & $mol/m^3$ & [0.07, 0.0]& [0.82, 0.0]& [2.11, 0.0]
 \\
 \hline
 Aged Data & &Cold FTP & Hot FTP & RMC\\ \hline
-$T$   & $+250 \, ^0C$ & & &
+$T$   & $+200 \, ^0C$ & [67.03, -172.85]& [72.5, -56.35]& [154.38, 48.18]
 \\
-$F$   & $g/s$ & & &
+$F$   & $g/s$ & [416.85, 0.0]& [418.24, 0.0]& [409.59, 32.63]
 \\
-$x_1$ & $mol/m^3$ & $[25.03,]$ &  $[4.9,]$ & $[3.24,]$
+$x_1$ & $mol/m^3$ & [25.03, 0.01] & [4.9, -0.42] & [3.24, 0.08]
 \\
-$x_2$ & $mol/m^3$ & $[0.04,]$ & $[0.6,]$ & $[0.23,]$
+$x_2$ & $mol/m^3$ & [0.04, 0.0] & [0.6, -0.02] & [0.23, 0.08]
 \\
-$u_1$ & $mol/m^3$ & $[18.58,]$ & $[16.26,]$ & $[22.89,]$
+$u_1$ & $mol/m^3$ &  [18.58, 0.0]& [16.26, 0.0] & [22.89, 0.0]
 \\
-$u_2$ & $mol/m^3$ & $[1.31,]$ & $[1.0,]$ & $[0.67,]$
+$u_2$ & $mol/m^3$ & [1.31, 0.0] & [1.0, 0.0] & [0.67, 0.01]
 \\
-$y_1$ & $mol/m^3$ & & &
+$y_1$ & $mol/m^3$ & [0.09, 0.0]& [1.06, 0.0]& [2.86, 0.0]
 \\
 \hline \hline
 \end{tabular}
 \caption{Test cell data ranges}
+\end{table}
+
+
+The variable names for each state in the data-set are tabulated bellow for reference.
+\begin{table}[H]
+\centering
+\begin{tabular}{l l l c}
+   \hline \hline
+   Variable Name                 & Units  & Description & Variable from Model \\ \hline \hline
+   LOG\_TM	                     & sec    & Time
+                                          & $t$\\
+   ENG\_SPD	                     & RPM    & Engine Speed
+                                          &\\
+   NET\_TORQ	                 & lb\_ft & Engine Torque
+                                          &\\
+   TEST\_CELL\_T	             & deg\_f & Test Cell Temperature
+                                          &\\
+   TUR\_OT\_T	                 & deg\_f & Turbine Outlet Gas Temperature
+                                          &\\
+   EXHAUST\_FLOW	             & kg/min & Exhaust Flow Rate
+                                          & $F$\\
+   V\_AIM\_TRC\_DOC\_IN	         & Deg\_C & DOC In Gas Temperature
+                                          &\\
+   V\_AIM\_TRC\_DOC\_OUT	     & Deg\_C & DOC Out Gas Temperature
+                                          &\\
+   V\_AIM\_TRC\_DPF\_OUT	     & Deg\_C & DPF Out Gas Temperature
+                                          &\\
+   V\_AIM\_TRC\_SCR\_OUT	     & Deg\_C & SCR/ASC Out Gas Temperature
+                                          &\\
+   V\_SCR\_ANR\_FDBK	         & None   & ANR (??)
+                                          &\\
+   V\_UIM\_FLM\_ESTUREAINJRATE	 & ml/sec & DEF (Urea Sol.) Dosing Rate
+                                          & $u_2$\\
+   ENG\_CW\_NOX\_FTIR\_COR\_U2	 & PPM    & Engine-Out NOx
+                                          & $u_1$\\
+   EXH\_CW\_NOX\_COR\_U1	     & PPM    & Tailpipe NOx
+                                          & $x_1$\\
+   EXH\_CW\_AMMONIA\_MEA	     & ppm    & Tailpipe NH3
+                                          & $x_2$\\
+   EXH\_CW\_N2O\_MEA	         & ppm    & Tailpipe N2O
+                                          &\\
+   ENG\_CW\_NO2\_COR\_U2	     & PPM    & DPF Outlet NO2
+                                          &\\
+EONOX\_COMP\_VALUE	         & ppm    & Engine-out NOx (with Corss-sensitivity)
+                                      & $y_3$\\
+V\_SCM\_PPM\_SCR\_OUT\_NOX	 & ppm    & SCR-out NOx  (with cross-sensitivity)                    & $y_1$\\
+   \hline \hline
+\end{tabular}
+\caption{Test Cell Data Variables}
 \end{table}
